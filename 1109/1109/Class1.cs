@@ -65,5 +65,18 @@ namespace _1109
             var withdrawal = new Transaction(-amount, date, note);
             _allTransaction.Add(withdrawal);
         }
+
+        public string GetAccountHistory()
+        {
+            var repost = new StringBuilder();
+            decimal balance = 0;
+            repost.AppendLine("Data\t\tAmount\tBalance\tNote");
+            foreach (var item in _allTransaction)
+            {
+                balance += item.Amount;
+                repost.AppendLine($"" + $"{item.Date.ToShortDateString()}\t" + $"{item.Amount}\t {balance}\t {item.Note}");
+            }
+            return repost.ToString();
+        }
     }
 }
