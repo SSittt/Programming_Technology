@@ -82,7 +82,7 @@ namespace FilmStudio
         /// <summary>
         /// вся инфа О ВСЕХ ФИЛЬМАХ
         /// </summary>
-        public static void PrintAllFilms(List<Film> films, List<Director> directors, List<Studio> studios)
+        public static void PrintAllFilms(List<Film> films, List<Director> directors , List<Studio> studios)
         {
             foreach (Film film in films)
             {
