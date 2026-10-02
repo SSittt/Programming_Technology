@@ -23,6 +23,14 @@
             {
                 Console.WriteLine(e.Message);
             }
+            InterestEarningAccount interestEarning = new("YANA", 1000m);
+            interestEarning.MakeDeposit(100m, DateTime.UtcNow, ":)");
+            interestEarning.MakeDeposit(10m, DateTime.UtcNow, ":(");
+            interestEarning.PerformMonthAndtransaction();
+            Console.WriteLine(interestEarning.GetAccountHistory());
+
+            Console.WriteLine(interestEarning); // =  Console.WriteLine(interestEarning.ToString());
+            Console.WriteLine(interestEarning.GetAccountHistory());
         }
     }
 }

@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 // USING SYSTEM.TRANSACTION из-за него может возикнцть ошибка 
 namespace _1109
 {
-    internal class BankAccount
+    //BankAccount потомок object => можно переопределить 
+    //виртуальные методы, находящиес в object 
+    public class BankAccount
     {
         // ctrl + f переименование naming 
         static private int accountNumberSeed = 1000000000; // номер счета 
@@ -78,5 +80,27 @@ namespace _1109
             }
             return repost.ToString();
         }
+
+        // ключевое слово virtual позволяет в дочернем классе 
+        // предоставить другую реализацию
+        // метод PerformMonthAndtransaction()
+        public virtual void PerformMonthAndtransaction()
+        {
+            
+        }
+
+        //пуреопределяем метод, который кнаследовал от object
+        //этот метод должен возвращать строку с состояннием объекта 
+        // 1- способ 
+        //public override string ToString()
+        //{
+        //    return $"Type: {GetType().Name}\tOwmer: {Owner} \t Number of account:{Number}";
+        //}
+
+        // 2- способ 
+
+        public override string ToString()
+        =>  $"Type: {GetType().Name}\tOwmer: {Owner} \t Number of account:{Number}";
+       
     }
 }
