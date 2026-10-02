@@ -31,6 +31,14 @@
 
             Console.WriteLine(interestEarning); // =  Console.WriteLine(interestEarning.ToString());
             Console.WriteLine(interestEarning.GetAccountHistory());
+
+            GiftCartAccount giftCart = new("Yana", 1000m, 5000m);
+            giftCart.MakeDeposit(100m, DateTime.UtcNow, ":)");
+            giftCart.MakeDeposit(10m, DateTime.UtcNow, ":)");
+            giftCart.PerformMonthAndtransaction();
+
+            Console.WriteLine(giftCart);
+            Console.WriteLine(giftCart.GetAccountHistory());
         }
     }
 }
