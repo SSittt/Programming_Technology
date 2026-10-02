@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace _1109
 {
     // recoed - состояние объектов этого класса нельзя изменить 
-    internal record Transaction (decimal Amount, DateTime Date, string Note);
+    public record Transaction (decimal Amount, DateTime Date, string Note);
     
     // более обширенный - можно его использовать когда нужно произвести проверку 
     //internal record Transaction

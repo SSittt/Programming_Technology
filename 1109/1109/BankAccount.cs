@@ -10,6 +10,7 @@ namespace _1109
     //виртуальные методы, находящиес в object 
     public class BankAccount
     {
+        private readonly decimal _minimumBalance;
         // ctrl + f переименование naming 
         static private int accountNumberSeed = 1000000000; // номер счета 
         public string Number {  get; } // номер счета 
@@ -32,10 +33,16 @@ namespace _1109
         private List<Transaction> _allTransaction = new List<Transaction>(); //создается новые листа когда создается новый объект 
 
         public BankAccount(string name, decimal initialBalance)
+            : this(name, initialBalance, 0) { }
+        public BankAccount(string name, decimal initialBalance, decimal minimumBalance)
         {
            
             Owner = name; // если имена одинаковый, поэтому this.owner = name
-            MakeDeposit (initialBalance, DateTime.UtcNow, "Initial balance");
+            _minimumBalance = minimumBalance;
+            if (initialBalance < 0) 
+            {
+                MakeDeposit(initialBalance, DateTime.UtcNow, "Initial balance");
+            }
 
             Number = accountNumberSeed.ToString();
             accountNumberSeed++;
@@ -54,18 +61,36 @@ namespace _1109
         }
         public void MakeWithdrawal(decimal amount, DateTime date, string note) // снятие
         {
-            if (amount <= 0) 
-            {
-                throw new ArgumentOutOfRangeException(nameof(amount), "Amount of withdrawal must be positive");
+            ArgumentOutOfRangeException.ThrowIfNegativeOrZero(amount);
+            Transaction? overdraftTransaction = CheckWithdrawalLimit(Balance - amount < _minimumBalance);
+            Transaction? withdrawal = new Transaction(-amount, date, note);
+            _allTransaction.Add(withdrawal);
 
+            if (overdraftTransaction != null) {
+                _allTransaction.Add(overdraftTransaction);
+            
             }
+            //if (amount <= 0) 
+            //{
+            //    throw new ArgumentOutOfRangeException(nameof(amount), "Amount of withdrawal must be positive");
 
-            if (Balance < amount)
+            //}
+
+            //if (Balance < amount)
+            //{
+            //    throw new InvalidOperationException("Not sufficient rubls for this withdrawal");
+            //}
+            //var withdrawal = new Transaction(-amount, date, note);
+            //_allTransaction.Add(withdrawal);
+        }
+
+        protected virtual Transaction? CheckWithdrawalLimit(bool v)
+        {
+            if (v) 
             {
                 throw new InvalidOperationException("Not sufficient rubls for this withdrawal");
             }
-            var withdrawal = new Transaction(-amount, date, note);
-            _allTransaction.Add(withdrawal);
+            return default;
         }
 
         public string GetAccountHistory()
