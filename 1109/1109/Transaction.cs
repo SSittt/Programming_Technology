@@ -7,6 +7,12 @@ using System.Threading.Tasks;
 namespace _1109
 {
     // recoed - состояние объектов этого класса нельзя изменить 
+    /// <summary>
+    /// Транзакция банковского счета 
+    /// </summary>
+    /// <param name="Amount">сумма транзакций</param>
+    /// <param name="Date">дата транзакции</param>
+    /// <param name="Note">коммент к транзакции</param>
     public record Transaction (decimal Amount, DateTime Date, string Note);
     
     // более обширенный - можно его использовать когда нужно произвести проверку 
