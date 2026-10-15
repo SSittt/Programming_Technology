@@ -13,6 +13,6 @@ namespace MedicalDevice
     {
         Diagnostic,
         Therapeutic,
-        Surgical
+        Surgical 
     }
 }

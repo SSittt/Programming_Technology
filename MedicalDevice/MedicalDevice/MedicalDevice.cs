@@ -31,7 +31,7 @@ namespace MedicalDevice
         public DeviceClass Class { get; set; } = DeviceClass.Diagnostic;
 
         /// <summary>
-        /// проверяет, потребляет ли устройства больше 1000 единиц мощности 
+        /// проверяет, потребляет ли устройства больше 1000 мощности 
         /// </summary>
         public bool IsRowIsPowerHungry => PowerConsumption > 1000;
 
