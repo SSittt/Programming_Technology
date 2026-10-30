@@ -3,9 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.37012.4
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankAccount.visualConsole", "1109\BankAccount.visualConsole.csproj", "{EBE39E44-2081-4180-AE0F-424DD224D1E0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankAccount.VisualConsole", "1109\BankAccount.VisualConsole.csproj", "{EBE39E44-2081-4180-AE0F-424DD224D1E0}"
+	ProjectSection(ProjectDependencies) = postProject
+		{03135C03-E5B3-4603-9D91-7DEDDB349B5A} = {03135C03-E5B3-4603-9D91-7DEDDB349B5A}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankAccounts.core", "BankAccounts.core\BankAccounts.core.csproj", "{03135C03-E5B3-4603-9D91-7DEDDB349B5A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankAccounts.Core", "BankAccounts.core\BankAccounts.Core.csproj", "{03135C03-E5B3-4603-9D91-7DEDDB349B5A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

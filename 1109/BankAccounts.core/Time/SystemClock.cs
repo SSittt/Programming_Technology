@@ -1,12 +1,7 @@
-п»їusing System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+namespace BankAccounts.Core.Time;
 
-namespace BankAccounts.core.Time
+// Реализация для продакшена: берет реальное время
+public sealed class SystemClock : IClock
 {
-    internal class SystemClock
-    {
-    }
+    public DateTime Now => DateTime.UtcNow;
 }
