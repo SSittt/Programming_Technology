@@ -1,9 +1,11 @@
-namespace BankAccounts.Core.AccountNumbers;
+ï»¿namespace BankAccounts.Core.AccountNumbers;
 
-// Ïğîñòàÿ ïîñëåäîâàòåëüíàÿ íóìåğàöèÿ. Ìîæíî çàìåíèòü íà GUID èëè äğóãóş ñòğàòåãèş (SRP)
+// ĞŸÑ€Ğ¾ÑÑ‚Ğ°Ñ Ğ¿Ğ¾ÑĞ»ĞµĞ´Ğ¾Ğ²Ğ°Ñ‚ĞµĞ»ÑŒĞ½Ğ°Ñ Ğ½ÑƒĞ¼ĞµÑ€Ğ°Ñ†Ğ¸Ñ. ĞœĞ¾Ğ¶Ğ½Ğ¾ Ğ·Ğ°Ğ¼ĞµĞ½Ğ¸Ñ‚ÑŒ Ğ½Ğ° GUID Ğ¸Ğ»Ğ¸ Ğ´Ñ€ÑƒĞ³ÑƒÑ ÑÑ‚Ñ€Ğ°Ñ‚ĞµĞ³Ğ¸Ñ (SRP)
 public sealed class SequentialAccountNumberGenerator : IAccountNumberGenerator
 {
     private int _seed;
+
+    // ĞºĞ¾Ğ½ÑÑ‚Ñ€ÑƒĞºÑ‚Ğ¾Ñ€
     public SequentialAccountNumberGenerator(int seed = 1234567890)
         => _seed = seed;
 

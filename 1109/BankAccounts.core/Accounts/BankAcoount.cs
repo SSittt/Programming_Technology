@@ -1,4 +1,4 @@
-using BankAccounts.Core.Accounts;
+п»їusing BankAccounts.Core.Accounts;
 using BankAccounts.Core.AccountNumbers;
 using BankAccounts.Core.MonthEnd;
 using BankAccounts.Core.Time;
@@ -6,7 +6,7 @@ using BankAccounts.Core.Transactions;
 using BankAccounts.Core.Withdrawals;
 
 namespace BankAccounts.Core.Accounts;
-// Тонкий класс - ядро: хранит транзакции, применяет политики и правила
+// РўРѕРЅРєРёР№ РєР»Р°СЃСЃ - СЏРґСЂРѕ: С…СЂР°РЅРёС‚ С‚СЂР°РЅР·Р°РєС†РёРё, РїСЂРёРјРµРЅСЏРµС‚ РїРѕР»РёС‚РёРєРё Рё РїСЂР°РІРёР»Р°
 public class BankAccount : IAccountOperations, IAccountStatement
 {
     private readonly List<Transaction> _transactions = new();
@@ -59,7 +59,7 @@ public class BankAccount : IAccountOperations, IAccountStatement
     {
         ArgumentOutOfRangeException.ThrowIfNegativeOrZero(amount);
 
-        // Применяем политику снятия: получаем решение, а не исключение
+        // РџСЂРёРјРµРЅСЏРµРј РїРѕР»РёС‚РёРєСѓ СЃРЅСЏС‚РёСЏ: РїРѕР»СѓС‡Р°РµРј СЂРµС€РµРЅРёРµ, Р° РЅРµ РёСЃРєР»СЋС‡РµРЅРёРµ
         var decision = _withdrawalPolicy.Evaluate(Balance, amount, MinimumBalance);
 
         if (!decision.IsAllowed)
@@ -67,7 +67,7 @@ public class BankAccount : IAccountOperations, IAccountStatement
 
         _transactions.Add(new Transaction(-amount, date, note));
 
-        // Если есть комиссия - добавляем отдельной транзакцией
+        // Р•СЃР»Рё РµСЃС‚СЊ РєРѕРјРёСЃСЃРёСЏ - РґРѕР±Р°РІР»СЏРµРј РѕС‚РґРµР»СЊРЅРѕР№ С‚СЂР°РЅР·Р°РєС†РёРµР№
         if (decision.Fee > 0)
             _transactions.Add(
                 new Transaction(-decision.Fee, date, "Apply overdraft fee"));
@@ -75,6 +75,7 @@ public class BankAccount : IAccountOperations, IAccountStatement
 
     public virtual void PerforMonthEndTransactions()
     {
+        if (_monthEndRules is null) return;
         var asOf = _clock.Now;
         foreach (var rule in _monthEndRules)
             rule.Apply(this, asOf);
